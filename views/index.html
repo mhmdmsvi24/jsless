@@ -14,15 +14,21 @@
     ></script>
   </head>
   <body>
-    <div id="count">
-      <button button hx-target="count" hx-post="/count">Count</button>
+    <!-- I'm template for count that is rendered below and I'll replaced by that thing! -->
+    <div>
+      Count
+      <div id="count">{{ template "count" . }}</div>
     </div>
-    {{ template "count" . }}
+    <button hx-target="#count" hx-post="/count">Count</button>
   </body>
 </html>
 
+<!-- There are separatetors with empty comment ignore them -->
 {{ end }}
 <!--  -->
+<!-- I'm block count and I accept an object count that is passed using target attribute -->
 {{block "count" .}}
 <!--  -->
-Count {{ .Count }} {{ end }}
+{{ .Count }}
+<!--  -->
+{{ end }}
